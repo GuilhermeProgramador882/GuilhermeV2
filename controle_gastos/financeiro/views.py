@@ -7,7 +7,7 @@ from .filters import MovimentacaoFilter
 
 @login_required
 def lista_movimentacoes(request):
-    movimentacoes = Movimentacao.objects.filter(usuario=request.user)
+    movimentacoes = Movimentacao.objects.filter(usuario=request.user).order_by('-data')
 
     filtro = MovimentacaoFilter(request.GET, queryset=movimentacoes)
     movimentacoes = filtro.qs
@@ -33,7 +33,7 @@ def criar_movimentacao(request):
         mov.usuario = request.user
         mov.save()
         return redirect('lista_movimentacoes')
-    return render(request, 'movimentacoes/form.html', {'form': form})
+    return render(request, 'movimentacoes/form.html', {'form': form, 'titulo': 'Nova Movimentação'})
 
 
 @login_required
@@ -43,11 +43,51 @@ def editar_movimentacao(request, id):
     if form.is_valid():
         form.save()
         return redirect('lista_movimentacoes')
-    return render(request, 'movimentacoes/form.html', {'form': form})
+    return render(request, 'movimentacoes/form.html', {'form': form, 'titulo': 'Editar Movimentação'})
 
 
 @login_required
 def excluir_movimentacao(request, id):
     mov = get_object_or_404(Movimentacao, id=id, usuario=request.user)
-    mov.delete()
-    return redirect('lista_movimentacoes')
+    if request.method == 'POST':
+        mov.delete()
+        return redirect('lista_movimentacoes')
+    return render(request, 'movimentacoes/confirmar_excluir.html', {'movimentacao': mov})
+
+
+# CRUD de Categorias
+@login_required
+def lista_categorias(request):
+    categorias = Categoria.objects.filter(usuario=request.user).order_by('nome')
+    return render(request, 'categorias/lista.html', {'categorias': categorias})
+
+
+@login_required
+def criar_categoria(request):
+    form = CategoriaForm(request.POST or None)
+    if form.is_valid():
+        cat = form.save(commit=False)
+        cat.usuario = request.user
+        cat.save()
+        return redirect('lista_categorias')
+    return render(request, 'categorias/form.html', {'form': form, 'titulo': 'Nova Categoria'})
+
+
+@login_required
+def editar_categoria(request, id):
+    cat = get_object_or_404(Categoria, id=id, usuario=request.user)
+    form = CategoriaForm(request.POST or None, instance=cat)
+    if form.is_valid():
+        form.save()
+        return redirect('lista_categorias')
+    return render(request, 'categorias/form.html', {'form': form, 'titulo': 'Editar Categoria'})
+
+
+@login_required
+def excluir_categoria(request, id):
+    cat = get_object_or_404(Categoria, id=id, usuario=request.user)
+    if request.method == 'POST':
+        cat.delete()
+        return redirect('lista_categorias')
+    return render(request, 'categorias/confirmar_excluir.html', {'categoria': cat})
+
