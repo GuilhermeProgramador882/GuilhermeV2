@@ -29,8 +29,4 @@ Execute os testes do projeto usando o comando de testes do Django.
 
 
 
-Observações
-
-- Adicione uma LICENSE se desejar.
-- Posso gerar um requirements.txt a partir do seu ambiente, se quiser.
 
