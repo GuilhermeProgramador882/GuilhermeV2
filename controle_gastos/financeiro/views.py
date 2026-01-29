@@ -55,7 +55,6 @@ def excluir_movimentacao(request, id):
     return render(request, 'movimentacoes/confirmar_excluir.html', {'movimentacao': mov})
 
 
-# CRUD de Categorias
 @login_required
 def lista_categorias(request):
     categorias = Categoria.objects.filter(usuario=request.user).order_by('nome')
