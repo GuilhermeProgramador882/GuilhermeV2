@@ -1,123 +1,36 @@
-# Controle de Gastos 💰
+Controle de Gastos
 
-**Aplicação Django para controlar categorias e movimentações financeiras (receitas/despesas).**
+Aplicação Django simples para gerenciar categorias e movimentações (receitas e despesas).
 
----
 
-## ✨ Visão geral
+Requisitos
 
-- Projeto criado com Django (app principal: `financeiro`).
-- Banco de dados padrão: **SQLite** (arquivo `db.sqlite3`).
-- Funcionalidades principais: CRUD de **Categorias** e **Movimentações**, autenticação básica (login/logout) e painel administrativo (`/admin/`).
+- Python 3.8+
+- Django (ou verificar `requirements.txt`)
 
----
 
-## 🚀 Começando (rápido)
+Como executar (resumo)
 
-1. Clone o repositório e navegue até a pasta do projeto:
+- Clone o repositório e entre na pasta do projeto.
+- Recomenda-se criar e ativar um ambiente virtual.
+- Instale as dependências com pip usando o arquivo requirements.txt.
+- Aplique as migrações do banco de dados e, se desejar, crie um superusuário.
+- Inicie o servidor de desenvolvimento e acesse o sistema pela URL padrão.
 
-```bash
-git clone <repo-url>
-cd controle_gastos
-```
 
-2. (Opcional, recomendado) Crie e ative um ambiente virtual:
+Banco de dados
 
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
+O projeto usa SQLite por padrão (arquivo db.sqlite3).
 
-3. Instale dependências:
 
-- Se existir `requirements.txt`:
+Testes
 
-```bash
-pip install -r requirements.txt
-```
+Execute os testes do projeto usando o comando de testes do Django.
 
-- Caso não exista, instale o Django e outras libs necessárias manualmente (ex.: `pip install django`) e gere um `requirements.txt` com:
 
-```bash
-pip freeze > requirements.txt
-```
 
-4. Aplique as migrações e crie um superusuário:
+Observações
 
-```bash
-python manage.py migrate
-python manage.py createsuperuser
-```
+- Adicione uma LICENSE se desejar.
+- Posso gerar um requirements.txt a partir do seu ambiente, se quiser.
 
-5. Inicie o servidor de desenvolvimento:
-
-```bash
-python manage.py runserver
-```
-
-Acesse a aplicação em `http://127.0.0.1:8000/`.
-
----
-
-## 🧭 Rotas principais
-
-- Página inicial (lista de movimentações): `/`
-- Nova movimentação: `/movimentacao/nova/`
-- Editar movimentação: `/movimentacao/editar/<id>/`
-- Excluir movimentação: `/movimentacao/excluir/<id>/`
-
-- Lista de categorias: `/categorias/`
-- Nova categoria: `/categoria/nova/`
-- Editar categoria: `/categoria/editar/<id>/`
-- Excluir categoria: `/categoria/excluir/<id>/`
-
-- Login: `/login/`
-- Logout: `/logout/`
-- Admin Django: `/admin/`
-
-> ⚠️ Observação: as URLs acima são as definidas no `financeiro/urls.py`.
-
----
-
-## 🧪 Testes
-
-Execute os testes com:
-
-```bash
-python manage.py test financeiro
-```
-
----
-
-## 🧩 Estrutura de templates
-
-Os templates estão em `controle_gastos/templates/`, com subpastas como `movimentacoes/` e `categorias/`. O template base é `base.html`.
-
----
-
-## 💡 Dicas & Observações
-
-- Caso precise configurar variáveis sensíveis (ex.: `SECRET_KEY`, `DEBUG`), configure via variáveis de ambiente ou use um `.env` (não comitar em repositórios públicos).
-- O projeto usa SQLite por padrão; para produção, considere migrar para PostgreSQL ou outro SGBD.
-
----
-
-## 🤝 Contribuição
-
-1. Fork + branch com feature/fix
-2. Abra um Pull Request com descrição clara
-3. Adicione testes quando aplicável
-
----
-
-## 📝 Licença
-
-Adicione uma licença (ex.: MIT) se desejar. Atualmente não há arquivo de licença neste repositório.
-
----
-
-Se quiser, posso também:
-- Gerar um `requirements.txt` atual a partir do seu ambiente de desenvolvimento
-- Adicionar um `CONTRIBUTING.md` ou `LICENSE`
-
-**Próximo passo sugerido:** verifique se deseja que eu gere o `requirements.txt` automaticamente a partir do seu ambiente ou adicionar um arquivo de licença. 🔧
