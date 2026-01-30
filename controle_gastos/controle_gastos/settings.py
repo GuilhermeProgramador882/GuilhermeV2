@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-am2!81zyts8n%u2!!yww1@o73)%=4n@#8#a&i5m@nj&ue6ur_n
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver', 'localhost', '127.0.0.1', '192.168.1.13']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -48,15 +48,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'controle_gastos.wsgi.application'
 
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+} 
 
 
 
-
-
+AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
@@ -79,6 +80,13 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
+
+# URL where requests are redirected for login (used by @login_required)
+LOGIN_URL = '/login/'
+# Where to redirect after a successful login
+LOGIN_REDIRECT_URL = '/'
+# Where to redirect after logout
+LOGOUT_REDIRECT_URL = '/login/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
