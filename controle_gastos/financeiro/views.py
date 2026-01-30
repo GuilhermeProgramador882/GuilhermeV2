@@ -1,5 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LogoutView
+from django.views.decorators.http import require_POST
+from django.utils.decorators import method_decorator
+
+# Logout somente via POST
+@method_decorator(require_POST, name='dispatch')
+class LogoutPostOnlyView(LogoutView):
+    # redireciona para a página de login após logout
+    next_page = '/login/'
+
 from django.db.models import Sum
 from .models import Movimentacao, Categoria
 from .forms import MovimentacaoForm, CategoriaForm
@@ -22,6 +32,25 @@ def lista_movimentacoes(request):
         'total_receitas': total_receitas,
         'total_despesas': total_despesas,
         'saldo': saldo,
+    })
+
+
+@login_required
+def dashboard(request):
+    """Resumo financeiro: totais e últimas movimentações do usuário"""
+    movimentacoes = Movimentacao.objects.filter(usuario=request.user)
+
+    total_receitas = movimentacoes.filter(categoria__tipo='receita').aggregate(Sum('valor'))['valor__sum'] or 0
+    total_despesas = movimentacoes.filter(categoria__tipo='despesa').aggregate(Sum('valor'))['valor__sum'] or 0
+    saldo = total_receitas - total_despesas
+
+    ultimas = movimentacoes.order_by('-data')[:5]
+
+    return render(request, 'dashboard.html', {
+        'total_receitas': total_receitas,
+        'total_despesas': total_despesas,
+        'saldo': saldo,
+        'ultimas': ultimas,
     })
 
 

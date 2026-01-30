@@ -1,0 +1,90 @@
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg, #05060a 0%, #0b0f1a 100%);
+    color: #e6eef8;
+    min-height: 100vh;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+.navbar .nav-link {
+    color: rgba(255,255,255,0.9);
+}
+
+.navbar .nav-link:hover {
+    color: #ffffff;
+}
+
+.card {
+    background-color: #071026;
+    color: #e6eef8;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.card .card-header {
+    font-weight: 600;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.table thead th {
+    background-color: rgba(255,255,255,0.03);
+    color: #cbd5e1;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255,255,255,0.02);
+}
+
+.table {
+    color: #e6eef8;
+}
+
+.form-control, .form-select {
+    background-color: #0b1220;
+    color: #e6eef8;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.form-control::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+footer.footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    color: #9ca3af;
+}
+
+/* Dark footer variant */
+footer.footer.footer-dark {
+    background-color: #040406;
+    border-top: none;
+    color: #f8fafc;
+}
+
+footer.footer.footer-dark small {
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-link {
+    color: rgba(255,255,255,0.9);
+}
+
+.alert {
+    margin-top: 10px;
+    background-color: rgba(255,255,255,0.02);
+    color: #e6eef8;
+    border: 1px solid rgba(255,255,255,0.03);
+}

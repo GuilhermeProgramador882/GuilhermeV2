@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Resumo Financeiro{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-3 card-receita">
+            <div class="card-header">Receitas 💰</div>
+            <div class="card-body">
+                <h4 class="card-title">R$ {{ total_receitas|floatformat:2 }}</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-3 card-despesa">
+            <div class="card-header">Despesas 💸</div>
+            <div class="card-body">
+                <h4 class="card-title">R$ {{ total_despesas|floatformat:2 }}</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-3 card-saldo">
+            <div class="card-header">Saldo 💎</div>
+            <div class="card-body">
+                <h4 class="card-title">R$ {{ saldo|floatformat:2 }}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h5>Últimas movimentações 🕘</h5>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in ultimas %}
+                <tr>
+                    <td>{{ m.data }}</td>
+                    <td>{{ m.descricao }}</td>
+                    <td>{{ m.categoria.nome }}</td>
+                    <td>R$ {{ m.valor|floatformat:2 }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4">Nenhuma movimentação encontrada.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
