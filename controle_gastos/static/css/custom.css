@@ -88,3 +88,21 @@ footer.footer.footer-dark small {
     color: #e6eef8;
     border: 1px solid rgba(255,255,255,0.03);
 }
+
+/* Login inputs (target default Django ids) */
+#id_username, #id_password {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background-color: #0b1220;
+    color: #e6eef8;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+}
+#id_username::placeholder, #id_password::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+#id_username:focus, #id_password:focus {
+    box-shadow: 0 0 0 0.15rem rgba(37,99,235,0.15);
+    border-color: #2563eb;
+    outline: none;
+}
