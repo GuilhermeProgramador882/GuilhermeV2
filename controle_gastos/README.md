@@ -21,7 +21,7 @@ Banco de dados
 
 O projeto usa SQLite por padrão (arquivo db.sqlite3).
 
-
+(Instale as dependencias do arquivo requirements.txt)
 
 
 
