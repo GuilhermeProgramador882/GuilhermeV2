@@ -61,7 +61,7 @@ footer.footer {
     color: #9ca3af;
 }
 
-/* Dark footer variant */
+
 footer.footer.footer-dark {
     background-color: #040406;
     border-top: none;
@@ -89,7 +89,7 @@ footer.footer.footer-dark small {
     border: 1px solid rgba(255,255,255,0.03);
 }
 
-/* Login inputs (target default Django ids) */
+
 #id_username, #id_password {
     width: 100%;
     padding: 0.5rem 0.75rem;

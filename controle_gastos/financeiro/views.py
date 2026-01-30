@@ -4,10 +4,10 @@ from django.contrib.auth.views import LogoutView
 from django.views.decorators.http import require_POST
 from django.utils.decorators import method_decorator
 
-# Logout somente via POST
+
 @method_decorator(require_POST, name='dispatch')
 class LogoutPostOnlyView(LogoutView):
-    # redireciona para a página de login após logout
+    
     next_page = '/login/'
 
 from django.db.models import Sum
